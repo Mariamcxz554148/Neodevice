@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вхід</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/login-register.css">
+</head>
+<body>
+<header class="header">
+    <div class="logo">NeoDevice</div>
+</header>
+
+<main class="auth-container">
+    <h2>Вхід</h2>
+    <input type="text" id="username" placeholder="Ім'я користувача">
+    <input type="password" id="password" placeholder="Пароль">
+    <button id="login-submit">Увійти</button>
+    <p>Ще немає акаунта? <a href="register.html">Зареєструватися</a></p>
+</main>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const redirectPage = params.get("redirect") || "index";
+
+document.getElementById("login-submit").addEventListener("click", () => {
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    if (username && password) {
+        localStorage.setItem("isLoggedIn", "true");
+
+        if (redirectPage === "cart") {
+            location.href = "cart.html";
+        } else {
+            location.href = "index.html";
+        }
+    } else {
+        alert("Введіть ім'я та пароль");
+    }
+});
+</script>
+</body>
+</html>
+

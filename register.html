@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Реєстрація</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/login-register.css">
+</head>
+<body>
+<header class="header">
+    <div class="logo">NeoDevice</div>
+</header>
+
+<main class="auth-container">
+    <h2>Реєстрація</h2>
+    <input type="text" id="reg-username" placeholder="Ім'я користувача">
+    <input type="password" id="reg-password" placeholder="Пароль">
+    <button id="register-submit">Зареєструватися</button>
+    <p>Вже є акаунт? <a href="login.html">Увійти</a></p>
+</main>
+
+<script>
+document.getElementById("register-submit").addEventListener("click", () => {
+    const username = document.getElementById("reg-username").value.trim();
+    const password = document.getElementById("reg-password").value.trim();
+
+    if (username && password) {
+        localStorage.setItem("isLoggedIn", "true");
+        location.href = "index.html";
+    } else {
+        alert("Заповніть усі поля");
+    }
+});
+</script>
+</body>
+</html>
+
